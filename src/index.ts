@@ -16,4 +16,9 @@ let io = socket.default(server);
 
 io.on('connection', (socket) => {
     console.log('**** Socket connection is made to the server ****', socket.id);
+
+    socket.on('chat', (data) => {
+        //console.log(JSON.stringify(data));
+        io.sockets.emit('chat', data)
+    });
 });
